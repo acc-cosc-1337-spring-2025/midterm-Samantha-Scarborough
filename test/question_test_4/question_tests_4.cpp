@@ -10,3 +10,19 @@ TEST_CASE("test")
 {
 	REQUIRE(test_config() == true);
 }
+
+TEST_CASE("Test time conversion functions") {
+    int input = 1570846218;
+
+    REQUIRE(get_hours(input) == 2);
+    REQUIRE(get_minutes(input) == 10);
+    REQUIRE(get_seconds(input) == 18);
+}
+
+TEST_CASE("Test time conversion functions") {
+    int input = 1570875018;
+
+    REQUIRE(get_hours(input) == 10);
+    REQUIRE(get_minutes(input) == 10);
+    REQUIRE(get_seconds(input) == 18);
+}
