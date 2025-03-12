@@ -1,20 +1,22 @@
-// Function using pass-by-reference
-void pass_by_reference(int &num) {
-    num = 100;  // Modifying the original variable
-    std::cout << "Inside pass_by_reference, num: " << num << std::endl;
+#include <iostream>
+
+// Function demonstrating value and reference parameters
+void modifyValues(int valParam, int& refParam) {
+    valParam += 10;  // Modifies only a copy, does not affect original
+    refParam += 10;  // Modifies the original variable
 }
 
 int main() {
-    int value = 10;
-    int reference = 10;
+    int a = 5, b = 5;
 
-    std::cout << "Before pass_by_value, value: " << value << std::endl;
-    pass_by_value(value);
-    std::cout << "After pass_by_value, value: " << value << std::endl;
+    std::cout << "Before function call:" << std::endl;
+    std::cout << "a (value parameter) = " << a << ", b (reference parameter) = " << b << std::endl;
 
-    std::cout << "\nBefore pass_by_reference, reference: " << reference << std::endl;
-    pass_by_reference(reference);
-    std::cout << "After pass_by_reference, reference: " << reference << std::endl;
+    modifyValues(a, b);
+
+    std::cout << "After function call:" << std::endl;
+    std::cout << "a (value parameter) = " << a << " (unchanged)" << std::endl;
+    std::cout << "b (reference parameter) = " << b << " (modified)" << std::endl;
 
     return 0;
 }

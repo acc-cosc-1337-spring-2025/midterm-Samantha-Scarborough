@@ -1,35 +1,31 @@
 
+#include "fib.h"
 #include <iostream>
-#include "fibonacci.h"
 
 int main() {
-    int n;
-    char choice;
+    while (true) {
+        int num;
 
-    do {
-        // 1) Prompt user for a number and validate input
-        do {
-            std::cout << "Enter a number (1 to 15) for the Fibonacci sequence: ";
-            std::cin >> n;
+        // Prompt user for input
+        std::cout << "Enter a number (1-15) to get Fibonacci sequence, or 0 to exit: ";
+        std::cin >> num;
 
-            if (n < 1 || n > 15) {
-                std::cout << "Invalid input! Please enter a number between 1 and 15.\n";
-            }
-        } while (n < 1 || n > 15); // Repeat until a valid number has been entered
+        // Exit condition
+        if (num == 0) {
+            std::cout << "Exiting program.\n";
+            break;
+        }
 
-        // 2) Pass the number to get_fib_sequence function
-        std::string result = get_fib_sequence(n);
+        // Validate input
+        if (num < 1 || num > 15) {
+            std::cout << "Invalid input! Please enter a number between 1 and 15.\n";
+            continue;
+        }
 
-        // 3) Display the Fibonacci sequence
-        std::cout << "Fibonacci Sequence: " << result << std::endl;
-
-        // 4) Ask the user if they want to continue
-        std::cout << "Generate another sequence? (y/n): ";
-        std::cin >> choice;
-
-    } while (choice == 'y' || choice == 'Y'); // Repeat until user chooses to exit the program
-
-    std::cout << "Program exited.\n";
+        // Generate and display the Fibonacci sequence
+        std::string fib_sequence = get_fib_sequence(num);
+        std::cout << "The Fibonacci Sequence: " << fib_sequence << "\n\n";
+    }
 
     return 0;
 }
